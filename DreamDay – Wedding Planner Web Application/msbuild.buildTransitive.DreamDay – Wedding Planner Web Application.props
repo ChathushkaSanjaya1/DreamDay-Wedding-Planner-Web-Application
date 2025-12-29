@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\DreamDay – Wedding Planner Web Application.props" />
+</Project>
