@@ -1,0 +1,188 @@
+﻿@{
+    ViewData["Title"] = "My Budget";
+}
+
+@section Styles {
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, #3F51B5 0%, #5C6BC0 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+            .sidebar .nav-link {
+                color: #e0e0e0;
+                font-weight: 500;
+            }
+
+                .sidebar .nav-link:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
+
+                .sidebar .nav-link.active {
+                    background-color: #fff;
+                    color: #3F51B5 !important;
+                    font-weight: bold;
+                    border-radius: 8px;
+                }
+
+        .card {
+            border-left: 5px solid #3F51B5;
+            border-radius: 12px;
+        }
+
+        .budget-table th, .budget-table td {
+            vertical-align: middle;
+        }
+
+        .form-control-sm {
+            border-radius: 8px;
+        }
+
+        .btn-save {
+            background-color: #3F51B5;
+            color: #fff;
+        }
+
+            .btn-save:hover {
+                background-color: #303F9F;
+            }
+    </style>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-12 col-md-3 col-lg-2 sidebar p-4">
+            <h4 class="fw-bold text-white mb-4"><i class="fas fa-gem me-2"></i>DreamDay</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Dashboard"><i class="fas fa-home me-2"></i>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Checklist"><i class="fas fa-check-circle me-2"></i>Checklist</a></li>
+                <li class="nav-item"><a class="nav-link active" asp-controller="Home" asp-action="Budget"><i class="fas fa-wallet me-2"></i>Budget</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Guests"><i class="fas fa-users me-2"></i>Guests</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Dahboard_Vendors"><i class="fas fa-store me-2"></i>Vendors</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Timeline"><i class="fas fa-calendar-alt me-2"></i>Timeline</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-12 col-md-9 col-lg-10 px-4 py-5">
+            <h2 class="fw-bold text-primary mb-4"><i class="fas fa-wallet me-2"></i>Wedding Budget Tracker</h2>
+
+            <!-- Budget Summary -->
+            <div class="card p-4 shadow-sm mb-4">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <h6 class="text-muted">Total Budget</h6>
+                        <h4 id="total-budget">Rs. 2,000,000</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="text-muted">Total Spent</h6>
+                        <h4 id="total-spent">Rs. 0</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="text-muted">Remaining</h6>
+                        <h4 id="total-remaining">Rs. 2,000,000</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget Items Table -->
+            <div class="card p-4 shadow-sm">
+                <h5 class="mb-3">Expense Items</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped budget-table" id="budget-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Amount (Rs.)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="budget-body">
+                            <!-- Rows injected by JS -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control form-control-sm" id="new-category" placeholder="e.g. Venue">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control form-control-sm" id="new-description" placeholder="e.g. Hall reservation">
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control form-control-sm" id="new-amount" placeholder="e.g. 250000">
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-save" onclick="addBudgetItem()"><i class="fas fa-plus"></i></button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const TOTAL_BUDGET = 2000000;
+        let budgetList = JSON.parse(localStorage.getItem("dreamdayBudget")) || [];
+
+        const updateSummary = () => {
+            let totalSpent = budgetList.reduce((sum, item) => sum + Number(item.amount), 0);
+            document.getElementById("total-spent").textContent = `Rs. ${totalSpent.toLocaleString()}`;
+            document.getElementById("total-remaining").textContent = `Rs. ${(TOTAL_BUDGET - totalSpent).toLocaleString()}`;
+        };
+
+        const renderTable = () => {
+            const tbody = document.getElementById("budget-body");
+            tbody.innerHTML = "";
+            budgetList.forEach((item, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${item.category}</td>
+                        <td>${item.description}</td>
+                        <td>Rs. ${Number(item.amount).toLocaleString()}</td>
+                        <td><button class="btn btn-sm btn-danger" onclick="removeItem(${index})"><i class="fas fa-trash"></i></button></td>
+                    </tr>
+                `;
+            });
+            updateSummary();
+            localStorage.setItem("dreamdayBudget", JSON.stringify(budgetList));
+        };
+
+        const addBudgetItem = () => {
+            const category = document.getElementById("new-category").value.trim();
+            const description = document.getElementById("new-description").value.trim();
+            const amount = parseFloat(document.getElementById("new-amount").value);
+
+            if (category && description && !isNaN(amount)) {
+                budgetList.push({ category, description, amount });
+                document.getElementById("new-category").value = "";
+                document.getElementById("new-description").value = "";
+                document.getElementById("new-amount").value = "";
+                renderTable();
+            } else {
+                alert("Please enter valid details for all fields.");
+            }
+        };
+
+        const removeItem = (index) => {
+            budgetList.splice(index, 1);
+            renderTable();
+        };
+
+        // Initialize
+        document.getElementById("total-budget").textContent = `Rs. ${TOTAL_BUDGET.toLocaleString()}`;
+        renderTable();
+    </script>
+}

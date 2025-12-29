@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Vendors";
+}
+
+@section Styles {
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .vendor-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background-color: #fff;
+        }
+
+            .vendor-card:hover {
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            }
+
+        .vendor-icon {
+            font-size: 2.5rem;
+            color: #3F51B5;
+        }
+
+        .vendor-name {
+            font-weight: 700;
+            color: #333;
+        }
+
+        .vendor-type {
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        .vendor-description {
+            font-size: 0.95rem;
+            color: #555;
+        }
+    </style>
+}
+
+<!-- Vendors Page Header -->
+<section class="text-center py-5">
+    <div class="container">
+        <h1 class="fw-bold text-primary mb-3">Our Trusted Vendors</h1>
+        <p class="lead text-muted">From venues to florists — discover the best services to make your day unforgettable.</p>
+    </div>
+</section>
+
+<!-- Vendor Cards -->
+<section class="pb-5">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Venue Vendor -->
+            <div class="col-md-4">
+                <div class="vendor-card p-4 text-center h-100">
+                    <i class="fas fa-map-marker-alt vendor-icon mb-3"></i>
+                    <div class="vendor-name">Golden Garden Venue</div>
+                    <div class="vendor-type">Wedding Venues</div>
+                    <p class="vendor-description mt-2">Spacious outdoor and indoor settings with customizable décor, located near the city center.</p>
+                </div>
+            </div>
+
+            <!-- Photographer Vendor -->
+            <div class="col-md-4">
+                <div class="vendor-card p-4 text-center h-100">
+                    <i class="fas fa-camera-retro vendor-icon mb-3"></i>
+                    <div class="vendor-name">Lens & Love Studios</div>
+                    <div class="vendor-type">Photographers</div>
+                    <p class="vendor-description mt-2">Capture your love story with cinematic photography and full-day coverage packages.</p>
+                </div>
+            </div>
+
+            <!-- Caterer Vendor -->
+            <div class="col-md-4">
+                <div class="vendor-card p-4 text-center h-100">
+                    <i class="fas fa-utensils vendor-icon mb-3"></i>
+                    <div class="vendor-name">Flavors Catering Co.</div>
+                    <div class="vendor-type">Caterers</div>
+                    <p class="vendor-description mt-2">Delight your guests with handcrafted gourmet menus tailored to your theme and culture.</p>
+                </div>
+            </div>
+
+            <!-- Florist Vendor -->
+            <div class="col-md-4">
+                <div class="vendor-card p-4 text-center h-100">
+                    <i class="fas fa-seedling vendor-icon mb-3"></i>
+                    <div class="vendor-name">Bloom & Co.</div>
+                    <div class="vendor-type">Florists</div>
+                    <p class="vendor-description mt-2">Elegant arrangements, bridal bouquets, and floral installations for any style or budget.</p>
+                </div>
+            </div>
+
+            <!-- Music Vendor -->
+            <div class="col-md-4">
+                <div class="vendor-card p-4 text-center h-100">
+                    <i class="fas fa-music vendor-icon mb-3"></i>
+                    <div class="vendor-name">Harmony DJs</div>
+                    <div class="vendor-type">Entertainment</div>
+                    <p class="vendor-description mt-2">Professional DJs and live bands ready to set the perfect mood for every moment.</p>
+                </div>
+            </div>
+
+            <!-- Makeup Artist -->
+            <div class="col-md-4">
+                <div class="vendor-card p-4 text-center h-100">
+                    <i class="fas fa-air-freshener vendor-icon mb-3"></i>
+                    <div class="vendor-name">Glam by Sara</div>
+                    <div class="vendor-type">Makeup & Styling</div>
+                    <p class="vendor-description mt-2">Bridal beauty packages including hair, makeup, and styling for your big day.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

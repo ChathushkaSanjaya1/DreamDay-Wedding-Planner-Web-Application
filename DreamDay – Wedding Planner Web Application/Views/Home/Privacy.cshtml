@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+@section Styles {
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .privacy-section h4 {
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+
+        .privacy-section i {
+            color: #3F51B5;
+        }
+
+        .privacy-section ul {
+            padding-left: 1.2rem;
+        }
+
+        .privacy-section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .privacy-section a {
+            text-decoration: none;
+            color: #3F51B5;
+            font-weight: 500;
+        }
+
+            .privacy-section a:hover {
+                text-decoration: underline;
+            }
+
+        .privacy-card {
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
+        }
+    </style>
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card privacy-card privacy-section">
+                <div class="card-body p-5">
+                    <h1 class="mb-4 text-primary fw-bold">
+                        <i class="fas fa-user-shield me-2"></i> @ViewData["Title"]
+                    </h1>
+
+                    <p class="lead">At <strong>DreamDay Weddings</strong>, your privacy is our promise. This policy outlines how we collect, use, and protect your data.</p>
+                    <hr class="my-4" />
+
+                    <h4><i class="fas fa-database me-2"></i>Information We Collect</h4>
+                    <ul>
+                        <li><strong>Account Info:</strong> Name, email, password, and selected role (Couple or Planner).</li>
+                        <li><strong>Wedding Data:</strong> Event date, checklist items, guest list, budgets.</li>
+                        <li><strong>Vendor Interactions:</strong> Bookings, messages, reviews.</li>
+                        <li><strong>Technical Info:</strong> IP address, device, browser, usage patterns.</li>
+                    </ul>
+
+                    <h4><i class="fas fa-cogs me-2"></i>How We Use Your Information</h4>
+                    <ul>
+                        <li>To personalize your dashboard and service suggestions.</li>
+                        <li>To maintain platform features and improve performance.</li>
+                        <li>To send event reminders and relevant notifications.</li>
+                        <li>To analyze usage trends for user experience improvements.</li>
+                    </ul>
+
+                    <h4><i class="fas fa-share-alt me-2"></i>Sharing & Disclosure</h4>
+                    <ul>
+                        <li>We never sell your data.</li>
+                        <li>We share data only with vendors you interact with.</li>
+                        <li>Trusted 3rd parties (e.g. payment gateways) may process data securely.</li>
+                        <li>We comply with legal requirements when disclosure is mandatory.</li>
+                    </ul>
+
+                    <h4><i class="fas fa-lock me-2"></i>Data Security</h4>
+                    <p>We apply SSL encryption, secure logins, and host your data on encrypted servers to safeguard your privacy.</p>
+
+                    <h4><i class="fas fa-user-cog me-2"></i>Your Rights</h4>
+                    <p>You can update or delete your data at any time via your dashboard. Contact us via <a href="mailto:support@dreamday.com">support@dreamday.com</a> for account-specific requests.</p>
+
+                    <h4><i class="fas fa-cookie-bite me-2"></i>Cookies</h4>
+                    <p>We use cookies for login sessions and behavior analysis. You may adjust cookie settings in your browser preferences.</p>
+
+                    <h4><i class="fas fa-sync-alt me-2"></i>Policy Updates</h4>
+                    <p>We update this policy when needed. All changes will be posted here with a new "Last Updated" timestamp.</p>
+
+                    <h4><i class="fas fa-envelope-open-text me-2"></i>Contact Us</h4>
+                    <p>For privacy concerns, email us at <a href="mailto:support@dreamday.com">support@dreamday.com</a>.</p>
+
+                    <hr class="mt-5" />
+                    <p class="text-muted text-end mb-0"><em>Last updated: April 2025</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DreamDay Weddings</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/heart (1).ico" />
+
+
+    <!-- Google Fonts: Quicksand -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap & FontAwesome -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DreamDay___Wedding_Planner_Web_Application.styles.css" asp-append-version="true" />
+
+    <!-- Page-Specific Styles -->
+    @RenderSection("Styles", required: false)
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+        }
+
+        .btn-primary {
+            background-color: #3F51B5;
+            border-color: #3F51B5;
+            font-weight: 600;
+        }
+
+            .btn-primary:hover {
+                background-color: #303F9F;
+                border-color: #303F9F;
+            }
+
+        .btn-outline-primary {
+            color: #3F51B5;
+            border-color: #3F51B5;
+            font-weight: 600;
+        }
+
+            .btn-outline-primary:hover {
+                background-color: #3F51B5;
+                color: white;
+            }
+
+        footer {
+            background-color: #f8f9fa;
+            color: #555;
+            font-weight: 500;
+            border-top: 1px solid #dee2e6;
+        }
+
+            footer span {
+                font-size: 0.95rem;
+            }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100 bg-light text-dark">
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-primary" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa-solid fa-heart-circle-check me-2"></i> DreamDay Weddings
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-3">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Features">Features</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Vendors">Vendors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Dashboard">Join as a Couple</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Planner" asp-action="Index">Join as a Planner</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Admin" asp-action="Index">Admin</a>
+                        </li>
+                    </ul>
+
+                    <!-- Styled Login/Register Buttons -->
+                    <div class="d-flex">
+                        <a class="btn btn-outline-primary me-2" href="/Identity/Account/Login">
+                            <i class="fas fa-sign-in-alt me-1"></i> Login
+                        </a>
+                        <a class="btn btn-primary" href="/Identity/Account/Register">
+                            <i class="fas fa-user-plus me-1"></i> Register
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Page Content -->
+    <main role="main" class="flex-grow-1 py-4">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center mt-auto">
+        <div class="container d-flex justify-content-center align-items-center flex-wrap">
+            <span>&copy; 2025 DreamDay Weddings. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

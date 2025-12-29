@@ -1,0 +1,217 @@
+﻿@{
+    ViewData["Title"] = "Manage Weddings";
+}
+
+@section Styles {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, #1E88E5 0%, #3949AB 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+            .sidebar .nav-link {
+                color: #e0e0e0;
+                font-weight: 500;
+            }
+
+                .sidebar .nav-link.active {
+                    background-color: #fff;
+                    color: #3949AB !important;
+                    font-weight: bold;
+                    border-radius: 8px;
+                }
+
+        .badge-upcoming {
+            background-color: #42A5F5;
+        }
+
+        .badge-completed {
+            background-color: #66BB6A;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+    </style>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-12 col-md-3 col-lg-2 sidebar p-4">
+            <h4 class="fw-bold text-white mb-4"><i class="fas fa-user-shield me-2"></i>Admin</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Users"><i class="fas fa-users me-2"></i>Users</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Vendors"><i class="fas fa-store me-2"></i>Vendors</a></li>
+                <li class="nav-item"><a class="nav-link active" asp-controller="Admin" asp-action="Weddings"><i class="fas fa-calendar-alt me-2"></i>Weddings</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Reports"><i class="fas fa-chart-bar me-2"></i>Reports</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-12 col-md-9 col-lg-10 px-4 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold text-primary"><i class="fas fa-calendar-alt me-2"></i>Manage Weddings</h2>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#weddingModal" onclick="openAddWeddingModal()">
+                    <i class="fas fa-plus me-1"></i> Add Wedding
+                </button>
+            </div>
+
+            <div class="card p-4 shadow-sm">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Wedding Title</th>
+                                <th>Date</th>
+                                <th>Couple</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="weddingTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Add/Edit Wedding Modal -->
+<div class="modal fade" id="weddingModal" tabindex="-1" aria-labelledby="weddingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form onsubmit="saveWedding(event)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="weddingModalLabel">Add / Edit Wedding</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="weddingIndex" />
+                    <div class="mb-3">
+                        <label class="form-label">Wedding Title</label>
+                        <input type="text" class="form-control" id="weddingTitle" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Wedding Date</label>
+                        <input type="date" class="form-control" id="weddingDate" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Couple Name(s)</label>
+                        <input type="text" class="form-control" id="weddingCouple" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select class="form-select" id="weddingStatus">
+                            <option value="Upcoming">Upcoming</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Wedding</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let weddingList = JSON.parse(localStorage.getItem("dreamdayWeddings")) || [
+            { title: "Nethmi & Dinuka's Wedding", date: "2025-05-10", couple: "Nethmi & Dinuka", status: "Upcoming" },
+            { title: "Shanika & Praveen", date: "2025-01-20", couple: "Shanika & Praveen", status: "Completed" }
+        ];
+
+        function saveToStorage() {
+            localStorage.setItem("dreamdayWeddings", JSON.stringify(weddingList));
+        }
+
+        function renderWeddings() {
+            const tbody = document.getElementById("weddingTableBody");
+            tbody.innerHTML = "";
+
+            weddingList.forEach((wedding, index) => {
+                const badgeClass = wedding.status === "Upcoming" ? "badge-upcoming" : "badge-completed";
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${wedding.title}</td>
+                        <td>${wedding.date}</td>
+                        <td>${wedding.couple}</td>
+                        <td><span class="badge ${badgeClass} text-white">${wedding.status}</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-warning me-2" onclick="editWedding(${index})"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteWedding(${index})"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            saveToStorage();
+        }
+
+        function openAddWeddingModal() {
+            document.getElementById("weddingModalLabel").textContent = "Add New Wedding";
+            document.getElementById("weddingIndex").value = "";
+            document.getElementById("weddingTitle").value = "";
+            document.getElementById("weddingDate").value = "";
+            document.getElementById("weddingCouple").value = "";
+            document.getElementById("weddingStatus").value = "Upcoming";
+        }
+
+        function editWedding(index) {
+            const wedding = weddingList[index];
+            document.getElementById("weddingIndex").value = index;
+            document.getElementById("weddingTitle").value = wedding.title;
+            document.getElementById("weddingDate").value = wedding.date;
+            document.getElementById("weddingCouple").value = wedding.couple;
+            document.getElementById("weddingStatus").value = wedding.status;
+            document.getElementById("weddingModalLabel").textContent = "Edit Wedding";
+
+            new bootstrap.Modal(document.getElementById("weddingModal")).show();
+        }
+
+        function saveWedding(event) {
+            event.preventDefault();
+            const index = document.getElementById("weddingIndex").value;
+            const title = document.getElementById("weddingTitle").value;
+            const date = document.getElementById("weddingDate").value;
+            const couple = document.getElementById("weddingCouple").value;
+            const status = document.getElementById("weddingStatus").value;
+
+            const newWedding = { title, date, couple, status };
+
+            if (index === "") {
+                weddingList.push(newWedding);
+            } else {
+                weddingList[parseInt(index)] = newWedding;
+            }
+
+            bootstrap.Modal.getInstance(document.getElementById("weddingModal")).hide();
+            renderWeddings();
+        }
+
+        function deleteWedding(index) {
+            if (confirm("Are you sure you want to delete this wedding?")) {
+                weddingList.splice(index, 1);
+                renderWeddings();
+            }
+        }
+
+        renderWeddings();
+    </script>
+}

@@ -1,0 +1,206 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+@section Styles {
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, #1E88E5 0%, #3949AB 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+            .sidebar .nav-link {
+                color: #e0e0e0;
+                font-weight: 500;
+            }
+
+                .sidebar .nav-link:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
+
+                .sidebar .nav-link.active {
+                    background-color: #fff;
+                    color: #3949AB !important;
+                    font-weight: bold;
+                    border-radius: 8px;
+                }
+
+        .card {
+            border-radius: 12px;
+            border-left: 5px solid #1E88E5;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: #1E88E5;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+    </style>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-12 col-md-3 col-lg-2 sidebar p-4">
+            <h4 class="fw-bold text-white mb-4"><i class="fas fa-user-shield me-2"></i>Admin</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link active" asp-controller="Admin" asp-action="Index"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Users"><i class="fas fa-users me-2"></i>Users</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Vendors"><i class="fas fa-store me-2"></i>Vendors</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Weddings"><i class="fas fa-calendar-alt me-2"></i>Weddings</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Reports"><i class="fas fa-chart-bar me-2"></i>Reports</a></li>
+               
+            </ul>
+        </nav>
+
+        <!-- Main Dashboard -->
+        <main class="col-12 col-md-9 col-lg-10 px-4 py-5">
+            <h2 class="fw-bold text-primary mb-4"><i class="fas fa-chart-line me-2"></i>Dashboard & Reports</h2>
+
+            <!-- Summary Cards -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3">
+                    <div class="card p-3 shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">Total Users</h6>
+                                <h4 class="fw-bold">1,024</h4>
+                            </div>
+                            <i class="fas fa-users card-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3 shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">Weddings</h6>
+                                <h4 class="fw-bold">245</h4>
+                            </div>
+                            <i class="fas fa-heart card-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3 shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">Vendors</h6>
+                                <h4 class="fw-bold">68</h4>
+                            </div>
+                            <i class="fas fa-store card-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3 shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">Revenue</h6>
+                                <h4 class="fw-bold">Rs. 1.5M</h4>
+                            </div>
+                            <i class="fas fa-money-bill card-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="chart-container mb-4">
+                        <h6 class="fw-bold mb-3">User Growth (Monthly)</h6>
+                        <canvas id="userGrowthChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="chart-container mb-4">
+                        <h6 class="fw-bold mb-3">Booking Trends</h6>
+                        <canvas id="bookingChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="chart-container mb-4">
+                        <h6 class="fw-bold mb-3">Vendor Distribution</h6>
+                        <canvas id="vendorPieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // User Growth Line Chart
+        new Chart(document.getElementById('userGrowthChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Users',
+                    data: [120, 190, 300, 500, 700, 1024],
+                    backgroundColor: 'rgba(63, 81, 181, 0.2)',
+                    borderColor: '#3F51B5',
+                    borderWidth: 2,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Booking Bar Chart
+        new Chart(document.getElementById('bookingChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Weddings',
+                    data: [15, 22, 35, 45, 60, 80],
+                    backgroundColor: '#1E88E5'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Vendor Pie Chart
+        new Chart(document.getElementById('vendorPieChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Venues', 'Caterers', 'Photographers', 'Florists', 'DJs'],
+                datasets: [{
+                    label: 'Vendors',
+                    data: [10, 15, 20, 13, 10],
+                    backgroundColor: ['#3F51B5', '#8E24AA', '#43A047', '#FB8C00', '#F4511E']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+}

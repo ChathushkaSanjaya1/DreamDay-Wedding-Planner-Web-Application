@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "My Clients";
+}
+
+@section Styles {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f9fbfd;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, #1E88E5 0%, #3949AB 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+            .sidebar .nav-link {
+                color: #e0e0e0;
+                font-weight: 500;
+            }
+
+                .sidebar .nav-link.active {
+                    background-color: #fff;
+                    color: #3949AB;
+                    border-radius: 8px;
+                }
+
+        .client-card {
+            border-radius: 16px;
+            background-color: #ffffff;
+            border-left: 5px solid #1E88E5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+            .client-card:hover {
+                transform: translateY(-4px);
+            }
+
+        .card-title {
+            color: #3949AB;
+        }
+
+        .btn-outline-primary {
+            border-radius: 50px;
+        }
+    </style>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 sidebar p-4">
+            <h4 class="fw-bold mb-4"><i class="fas fa-user-tie me-2"></i>Planner</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" asp-controller="Planner" asp-action="Index"><i class="fas fa-gauge me-2"></i>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Planner" asp-action="Weddings"><i class="fas fa-calendar-heart me-2"></i>My Weddings</a></li>
+                <li class="nav-item"><a class="nav-link active" asp-controller="Planner" asp-action="Clients"><i class="fas fa-users me-2"></i>Clients</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Planner" asp-action="Messages"><i class="fas fa-comments me-2"></i>Messages</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-9 col-lg-10 px-4 py-5">
+            <h2 class="fw-bold text-primary mb-4"><i class="fas fa-users me-2"></i>My Clients</h2>
+
+            <div class="row g-4">
+                <!-- Sample Client 1 -->
+                <div class="col-md-6">
+                    <div class="client-card p-4">
+                        <h5 class="card-title mb-2"><i class="fas fa-user-circle me-2"></i>Sethmi Perera</h5>
+                        <p class="mb-1"><strong>Email:</strong> Sethmi@example.com</p>
+                        <p class="mb-1"><strong>Wedding:</strong> Sethmi & Dinuka</p>
+                        <p class="mb-3"><strong>Date:</strong> 2025-05-10</p>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye me-1"></i> View</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary"><i class="fas fa-envelope me-1"></i> Message</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Client 2 -->
+                <div class="col-md-6">
+                    <div class="client-card p-4">
+                        <h5 class="card-title mb-2"><i class="fas fa-user-circle me-2"></i>Shanika Perera</h5>
+                        <p class="mb-1"><strong>Email:</strong> shanika@example.com</p>
+                        <p class="mb-1"><strong>Wedding:</strong> Shanika & Praveen</p>
+                        <p class="mb-3"><strong>Date:</strong> 2025-06-22</p>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye me-1"></i> View</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary"><i class="fas fa-envelope me-1"></i> Message</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more clients similarly... -->
+            </div>
+        </main>
+    </div>
+</div>
