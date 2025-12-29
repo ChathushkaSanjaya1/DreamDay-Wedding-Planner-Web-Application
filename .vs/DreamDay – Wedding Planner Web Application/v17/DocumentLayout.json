@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EDBA25AE-C501-4B09-8DE6-79D2113021FB}|DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application.csproj|d:\\c#webprojets\\dreamday \u2013 wedding planner web application\\dreamday \u2013 wedding planner web application\\views\\planner\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EDBA25AE-C501-4B09-8DE6-79D2113021FB}|DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application.csproj|solutionrelative:dreamday \u2013 wedding planner web application\\views\\planner\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDBA25AE-C501-4B09-8DE6-79D2113021FB}|DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application.csproj|d:\\c#webprojets\\dreamday \u2013 wedding planner web application\\dreamday \u2013 wedding planner web application\\views\\planner\\messages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EDBA25AE-C501-4B09-8DE6-79D2113021FB}|DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application.csproj|solutionrelative:dreamday \u2013 wedding planner web application\\views\\planner\\messages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDBA25AE-C501-4B09-8DE6-79D2113021FB}|DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application.csproj|d:\\c#webprojets\\dreamday \u2013 wedding planner web application\\dreamday \u2013 wedding planner web application\\views\\planner\\weddings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EDBA25AE-C501-4B09-8DE6-79D2113021FB}|DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application.csproj|solutionrelative:dreamday \u2013 wedding planner web application\\views\\planner\\weddings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDBA25AE-C501-4B09-8DE6-79D2113021FB}|DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application.csproj|d:\\c#webprojets\\dreamday \u2013 wedding planner web application\\dreamday \u2013 wedding planner web application\\views\\planner\\clients.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EDBA25AE-C501-4B09-8DE6-79D2113021FB}|DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application.csproj|solutionrelative:dreamday \u2013 wedding planner web application\\views\\planner\\clients.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDBA25AE-C501-4B09-8DE6-79D2113021FB}|DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application.csproj|d:\\c#webprojets\\dreamday \u2013 wedding planner web application\\dreamday \u2013 wedding planner web application\\controllers\\plannercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDBA25AE-C501-4B09-8DE6-79D2113021FB}|DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application.csproj|solutionrelative:dreamday \u2013 wedding planner web application\\controllers\\plannercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Clients.cshtml",
+              "DocumentMoniker": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Clients.cshtml",
+              "RelativeDocumentMoniker": "DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Clients.cshtml",
+              "ToolTip": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Clients.cshtml",
+              "RelativeToolTip": "DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Clients.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEkAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-21T19:50:09.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Weddings.cshtml",
+              "DocumentMoniker": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Weddings.cshtml",
+              "RelativeDocumentMoniker": "DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Weddings.cshtml",
+              "ToolTip": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Weddings.cshtml",
+              "RelativeToolTip": "DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Weddings.cshtml",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-21T19:48:11.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlannerController.cs",
+              "DocumentMoniker": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application\\Controllers\\PlannerController.cs",
+              "RelativeDocumentMoniker": "DreamDay \u2013 Wedding Planner Web Application\\Controllers\\PlannerController.cs",
+              "ToolTip": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application\\Controllers\\PlannerController.cs",
+              "RelativeToolTip": "DreamDay \u2013 Wedding Planner Web Application\\Controllers\\PlannerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T19:47:43.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Index.cshtml",
+              "RelativeDocumentMoniker": "DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Index.cshtml",
+              "ToolTip": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Index.cshtml",
+              "RelativeToolTip": "DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Index.cshtml",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAAAIsAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-21T19:47:32.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Messages.cshtml",
+              "DocumentMoniker": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Messages.cshtml",
+              "RelativeDocumentMoniker": "DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Messages.cshtml",
+              "ToolTip": "D:\\C#WebProjets\\DreamDay \u2013 Wedding Planner Web Application\\DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Messages.cshtml",
+              "RelativeToolTip": "DreamDay \u2013 Wedding Planner Web Application\\Views\\Planner\\Messages.cshtml",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAwwF4AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-21T19:45:51.745Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
